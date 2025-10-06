@@ -111,7 +111,7 @@ def ping_bot():
             bot.send_message(ADMIN_ID, f"💓 Bot Active | Ping: {ping_time} ms")
         except Exception as e:
             bot.send_message(ADMIN_ID, f"⚠️ Ping error: {e}")
-        time.sleep(300)  # 5 minutes = 300 seconds
+        time.sleep(30)  # 5 minutes = 300 seconds
 
 @bot.message_handler(commands=['pingactive'])
 def start_ping(message):
