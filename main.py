@@ -1,4 +1,5 @@
 import telebot
+import os
 import json
 import time
 import threading
@@ -6,8 +7,8 @@ import requests
 from operator import itemgetter
 
 # === CONFIG ===
-BOT_TOKEN = "YOUR_BOT_TOKEN"   # apna token yahan daal
-ADMIN_ID = 123456789           # apni Telegram numeric ID daal
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+ADMIN_ID = int(os.getenv("ADMIN_ID"))
 DATA_FILE = "points.json"
 
 bot = telebot.TeleBot(BOT_TOKEN)
