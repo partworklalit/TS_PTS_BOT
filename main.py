@@ -7,6 +7,9 @@ import requests
 from operator import itemgetter
 
 # === CONFIG ===
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
+REPO = "partworklalit/telegram-points-db"
+FILE_PATH = "points.json"
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 ADMIN_ID = int(os.getenv("ADMIN_ID"))
 DATA_FILE = "points.json"
