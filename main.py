@@ -114,7 +114,7 @@ def ping_bot():
             bot.send_message(ADMIN_ID, f"💓 Bot Active | Ping: {ping_time} ms")
         except Exception as e:
             bot.send_message(ADMIN_ID, f"⚠️ Ping error: {e}")
-        time.sleep(30)  # 5 minutes = 300 seconds
+        time.sleep(3)  # 5 minutes = 300 seconds
 
 @bot.message_handler(commands=['pingactive'])
 def start_ping(message):
@@ -125,7 +125,7 @@ def start_ping(message):
         return bot.reply_to(message, "✅ Ping system already active hai.")
     ping_active = True
     threading.Thread(target=ping_bot, daemon=True).start()
-    bot.reply_to(message, "🚀 Ping system active ho gaya! Har 5 minute me ping message aayega.")
+    bot.reply_to(message, "🚀 Ping system active ho gaya! Har 3 second me ping message aayega.")
 
 @bot.message_handler(commands=['pingdisable'])
 def stop_ping(message):
