@@ -132,6 +132,29 @@ def stop_ping(message):
     ping_active = False
     bot.reply_to(message, "🛑 Ping system disable kar diya gaya.")
 
+# === /removeuser ===
+@bot.message_handler(commands=['removeuser'])
+def remove_user(message):
+    if message.from_user.id != ADMIN_ID:
+        return bot.reply_to(message, "⛔ Ye command sirf admin ke liye hai.")
+    
+    try:
+        parts = message.text.split()
+        if len(parts) < 2:
+            return bot.reply_to(message, "⚠️ Format galat hai.\nSahi format: /removeuser @username ya /removeuser 123456789")
+        
+        user_tag = parts[1].replace('@', '')
+        data = load_data()
+
+        if user_tag in data["users"]:
+            del data["users"][user_tag]
+            save_data(data)
+            bot.reply_to(message, f"🗑️ {user_tag} ko points list se remove kar diya gaya.")
+        else:
+            bot.reply_to(message, f"❌ {user_tag} list me nahi mila.")
+    except Exception as e:
+        bot.reply_to(message, f"⚠️ Error aaya: {e}")
+
 # === Start bot ===
 print("Bot is running...")
 bot.polling(non_stop=True)
